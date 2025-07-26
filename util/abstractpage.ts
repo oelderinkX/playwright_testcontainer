@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 import { IPage } from '../interfaces/ipage'
 
 export abstract class AbstractPage implements IPage {
@@ -20,7 +20,7 @@ export abstract class AbstractPage implements IPage {
 
         console.log('loading Html...');
         this.html = this.page.locator('html');
-        await expect(this.html).toBeVisible();
+        await this.html.waitFor();
     }
 
     async getCookieValue(cookieName: string): Promise<string> {

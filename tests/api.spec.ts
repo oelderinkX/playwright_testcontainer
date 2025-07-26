@@ -6,5 +6,5 @@ test('verify cat facts work', { tag: '@p1'}, async ({ container }) => {
 
     console.log(factAboutACat);
 
-    await expect(factAboutACat, 'some kind of cat fact should have been returned').not.toBeNull();
+    expect(factAboutACat, 'some kind of cat fact should have been returned').not.toBeNull();
 });

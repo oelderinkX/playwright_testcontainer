@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test'
+import { type Locator, type Page } from '@playwright/test'
 import { AbstractPage } from '../util/abstractpage'
 import { GoogleResultsPage } from '../pageobjects/googleresultspage'
 
@@ -10,8 +10,8 @@ export class GooglePage extends AbstractPage {
     constructor(page: Page, url?: string) {
         super(page, url);
 
-        this.searchTextBox = this.page.locator("css=textarea[title='Search']");
-        this.doodle = this.page.locator("#hplogo");
+        this.searchTextBox = this.page.locator("textarea[title='Search']");
+        this.doodle = this.page.locator("svg.lnXdpd");
         this.searchButton = this.page.locator("input[aria-label='Google Search']").last();
     }
 
@@ -19,7 +19,7 @@ export class GooglePage extends AbstractPage {
         await super.pageLoad();
         console.log('loading GooglePage...');
 
-        await expect(this.searchTextBox).toBeVisible();
+        await this.searchTextBox.waitFor();
     }
 
     async hasDoodle(): Promise<boolean> {
