@@ -9,5 +9,5 @@ test('verify .env file has been set up', { tag: '@p1'}, async ({ container }) =>
       console.log(`Using .env from /Users/${process.env.USER}/.env`);
     }
 
-    await expect(TestConfig.instance.dotenv.pass, 'Have you set up the .env in the expected folder ?').toEqual('Passed!');
+    expect(TestConfig.instance.dotenv.pass, 'Have you set up the .env in the expected folder ?').toEqual('Passed!');
 });
