@@ -10,9 +10,9 @@ export class GooglePage extends AbstractPage {
     constructor(page: Page, url?: string) {
         super(page, url);
 
-        this.searchTextBox = this.page.locator("textarea[title='Search']");
-        this.doodle = this.page.locator("svg.lnXdpd");
-        this.searchButton = this.page.locator("input[aria-label='Google Search']").last();
+        this.searchTextBox = page.locator("textarea[title='Search']");
+        this.doodle = page.locator("svg.lnXdpd");
+        this.searchButton = page.locator("input[aria-label='Google Search']").last();
     }
 
     override async pageLoad(): Promise<void> {

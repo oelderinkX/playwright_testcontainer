@@ -10,6 +10,7 @@ export abstract class AbstractPage implements IPage {
     constructor(page: Page, url?: string) {
         this.page = page;
         this.url = url;
+        this.html = this.page.locator('html');
     }
 
     async pageLoad(): Promise<void> {
@@ -19,7 +20,6 @@ export abstract class AbstractPage implements IPage {
         }   
 
         console.log('loading Html...');
-        this.html = this.page.locator('html');
         await this.html.waitFor();
     }
 

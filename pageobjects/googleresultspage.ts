@@ -8,8 +8,8 @@ export class GoogleResultsPage extends AbstractPage {
     constructor(page: Page, url?: string) {
         super(page, url);
 
-        this.searchResults = this.page.locator('#search');
-        this.resultsArea = this.page.locator('#rso');
+        this.searchResults = page.locator('#search');
+        this.resultsArea = page.locator('#rso');
     }
 
     override async pageLoad(): Promise<void> {
@@ -27,11 +27,10 @@ export class GoogleResultsPage extends AbstractPage {
     async getResults(): Promise<string[]> {
         let results: string[] = [];
 
-        const resultElements = await this.resultsArea.locator('h3')
+        const resultElements = this.resultsArea.locator('h3')
 
-        for(let i = 0; i < await resultElements.count(); i++) 
-        {
-            const r2 = await resultElements.nth(i).innerText();
+        for(let i = 0; i < await resultElements.count(); i++) {
+            const r2: string = await resultElements.nth(i).innerText();
             results.push(r2);
         }
 
